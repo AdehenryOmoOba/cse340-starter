@@ -45,3 +45,16 @@ When you installed Git and cloned the remote repository in week 1, you should ha
 1. Go to http://localhost:5500 in a browser tab. Nothing should be visible as the server has not been setup to repond to that route.
 2. Add "/filename.html" to the end of the URL (replacing filename with the name of the file you moved to the public folder).
 3. You should see that page in the browser.
+
+## EJS Syntax
+
+Tags
+- <%  'Scriptlet' tag, for control-flow, no output
+- <%_ 'Whitespace Slurping' Scriptlet tag, strips all whitespace before it
+- <%= Outputs the value into the template (HTML escaped)
+- <%- Outputs the unescaped value into the template
+- <%# Comment tag, no execution, no output
+- <%% Outputs a literal '<%'
+- %> Plain ending tag
+- -%> Trim-mode ('newline slurp') tag, trims following newline
+- _%>'Whitespace Slurping' ending tag, removes all whitespace after it
