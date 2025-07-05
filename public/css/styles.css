@@ -147,17 +147,19 @@ h2 {
 }
 
 .hero-content h2 {
-  color: var(--primary-color);
-  font-size: 1.6rem;
+  color: var(--secondary-color);
+  font-size: 1.8rem;
   margin-bottom: 15px;
+  font-weight: 700;
 }
 
 .delorean-features {
   list-style: none;
   padding: 0;
   margin-bottom: 20px;
-  color: var(--primary-color);
-  font-weight: 500;
+  color: var(--secondary-color);
+  font-weight: 400;
+  font-size: 1.1rem;
 }
 
 .delorean-features li {
@@ -174,13 +176,20 @@ h2 {
   font-weight: bold;
 }
 
+.own-today-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
 .own-today-btn {
-  max-width: 150px;
+  max-width: 180px;
+  height: auto;
   cursor: pointer;
+  display: block;
   transition: transform 0.3s ease;
 }
 
-.own-today-btn:hover {
+.own-today-link:hover .own-today-btn {
   transform: scale(1.05);
 }
 
@@ -191,8 +200,7 @@ h2 {
 .hero-image img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  display: block;
 }
 
 /******* Content Wrapper ***************/
@@ -244,7 +252,7 @@ h2 {
 
 .upgrade-item {
   background-color: var(--secondary-color);
-  border-radius: 8px;
+  border: 2px solid var(--secondary-color);
   overflow: hidden;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -257,8 +265,12 @@ h2 {
 
 .upgrade-item img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  max-height: 120px;
+  object-fit: contain;
+  padding: 10px;
+  background-color: var(--white);
 }
 
 .upgrade-item a {
@@ -295,6 +307,8 @@ footer p {
   main {
     margin: 20px auto;
     max-width: 1200px;
+    overflow: hidden;
+    position: relative;
   }
 
   #top-header {
@@ -330,19 +344,39 @@ footer p {
   }
 
   .hero-section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-    align-items: center;
-  }
-
-  .hero-content {
-    order: 1;
+    position: relative;
+    height: 400px;
+    margin-bottom: 60px;
+    overflow: visible;
   }
 
   .hero-image {
-    order: 2;
+    position: absolute;
+    right: -50px;
+    top: -30px;
+    width: 75%;
+    height: 110%;
     margin-top: 0;
+    z-index: 1;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+  }
+
+  .hero-content {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 2;
+    padding: 30px;
   }
 
   .content-wrapper {
@@ -350,8 +384,13 @@ footer p {
     gap: 30px;
   }
 
-  .reviews-section,
   .upgrades-section {
+    order: 1;
+    flex: 1;
+  }
+
+  .reviews-section {
+    order: 2;
     flex: 1;
   }
 
