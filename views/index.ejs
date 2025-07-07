@@ -1,26 +1,28 @@
 <h1>Welcome to CSE Motors!</h1>
 
-<div class="hero-section">
+<section class="hero-section" aria-labelledby="hero-title">
     <div class="hero-content">
-        <h2>DMC Delorean</h2>
-        <ul class="delorean-features">
+        <h2 id="hero-title">DMC Delorean</h2>
+        <ul class="delorean-features" aria-label="DMC Delorean features">
             <li>3 Cup holders</li>
             <li>Superman doors</li>
             <li>Fuzzy dice!</li>
         </ul>
-        <a href="/vehicles/delorean" class="own-today-link">
-            <img src="/images/site/own_today.png" alt="Own Today" class="own-today-btn">
+        <a href="/vehicles/delorean" class="own-today-link" aria-label="View details and purchase the DMC Delorean">
+            <img src="/images/site/own_today.png" alt="Own Today - Click to purchase the DMC Delorean"
+                class="own-today-btn">
         </a>
     </div>
     <div class="hero-image">
-        <img src="/images/vehicles/delorean.jpg" alt="DMC Delorean">
+        <img src="/images/vehicles/delorean.jpg"
+            alt="DMC Delorean sports car with gull-wing doors and stainless steel body">
     </div>
-</div>
+</section>
 
 <div class="content-wrapper">
-    <section class="reviews-section">
-        <h2>DMC Delorean Reviews</h2>
-        <ul class="reviews-list">
+    <section class="reviews-section" aria-labelledby="reviews-title">
+        <h2 id="reviews-title">DMC Delorean Reviews</h2>
+        <ul class="reviews-list" aria-label="Customer reviews for DMC Delorean">
             <li>"So fast it's almost like traveling in time." (4/5)</li>
             <li>"Coolest ride on the road." (4/5)</li>
             <li>"I'm feeling McFly!" (5/5)</li>
@@ -29,24 +31,25 @@
         </ul>
     </section>
 
-    <section class="upgrades-section">
-        <h2>Delorean Upgrades</h2>
-        <div class="upgrades-grid">
-            <div class="upgrade-item">
-                <img src="/images/upgrades/flux-cap.png" alt="Flux Capacitor">
-                <a href="/upgrades/flux-capacitor">Flux Capacitor</a>
+    <section class="upgrades-section" aria-labelledby="upgrades-title">
+        <h2 id="upgrades-title">Delorean Upgrades</h2>
+        <div class="upgrades-grid" role="list" aria-label="Available Delorean upgrades">
+            <div class="upgrade-item" role="listitem">
+                <img src="/images/upgrades/flux-cap.png" alt="Flux Capacitor upgrade component">
+                <a href="/upgrades/flux-capacitor" aria-label="View Flux Capacitor upgrade details">Flux Capacitor</a>
             </div>
-            <div class="upgrade-item">
-                <img src="/images/upgrades/flame.jpg" alt="Flame Decals">
-                <a href="/upgrades/flame-decals">Flame Decals</a>
+            <div class="upgrade-item" role="listitem">
+                <img src="/images/upgrades/flame.jpg" alt="Flame Decals upgrade package">
+                <a href="/upgrades/flame-decals" aria-label="View Flame Decals upgrade details">Flame Decals</a>
             </div>
-            <div class="upgrade-item">
-                <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Stickers">
-                <a href="/upgrades/bumper-stickers">Bumper Stickers</a>
+            <div class="upgrade-item" role="listitem">
+                <img src="/images/upgrades/bumper_sticker.jpg" alt="Bumper Stickers upgrade collection">
+                <a href="/upgrades/bumper-stickers" aria-label="View Bumper Stickers upgrade details">Bumper
+                    Stickers</a>
             </div>
-            <div class="upgrade-item">
-                <img src="/images/upgrades/hub-cap.jpg" alt="Hub Caps">
-                <a href="/upgrades/hub-caps">Hub Caps</a>
+            <div class="upgrade-item" role="listitem">
+                <img src="/images/upgrades/hub-cap.jpg" alt="Hub Caps upgrade set">
+                <a href="/upgrades/hub-caps" aria-label="View Hub Caps upgrade details">Hub Caps</a>
             </div>
         </div>
     </section>
