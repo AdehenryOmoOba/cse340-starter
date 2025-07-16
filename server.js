@@ -3,6 +3,9 @@ const expressLayouts = require("express-ejs-layouts")
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
+const baseController = require("./controllers/baseController")
+const utilities = require("./utilities/");
+const inventoryRoute = require("./routes/inventoryRoute")
 
 
 // View Engine and Templates
@@ -10,13 +13,20 @@ app.set("view engine", "ejs")
 app.use(expressLayouts)
 app.set("layout", "./layouts/layout") // not at views root
 
+// Middleware to set nav for all views
+app.use(async (req, res, next) => {
+  res.locals.nav = await utilities.getNav();
+  next();
+});
+
 // Routes
 app.use(static)
 
+// Inventory routes
+app.use("/inv", inventoryRoute)
+
 // Index route
-app.get("/", function(req, res) {
-  res.render("index", {title: "Home"})
-})
+app.get("/", baseController.buildHome)
 
  // Values from .env (environment) file
 const port = process.env.PORT

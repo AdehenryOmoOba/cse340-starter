@@ -347,6 +347,77 @@ footer p {
   font-size: 1rem;
 }
 
+/* Inventory Grid Styles */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+#inv-display li {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#inv-display li:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+}
+
+#inv-display img {
+  width: 100%;
+  max-width: 240px;
+  height: auto;
+  border-bottom: 1px solid var(--light-gray);
+  background: var(--light-gray);
+  object-fit: cover;
+}
+
+#inv-display .namePrice {
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+#inv-display h2 {
+  font-size: 1.1rem;
+  margin: 0.5rem 0 0.3rem 0;
+}
+
+#inv-display a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+#inv-display a:hover,
+#inv-display a:focus {
+  text-decoration: underline;
+}
+
+#inv-display span {
+  display: block;
+  color: var(--dark-color);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  #inv-display {
+    grid-template-columns: 1fr;
+  }
+}
+
 /******* Media Queries for Larger Screens ***************/
 @media screen and (min-width: 768px) {
   main {

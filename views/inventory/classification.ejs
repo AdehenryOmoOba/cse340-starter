@@ -1,0 +1,12 @@
+<% /* Content Heading: Shows the title as the main heading, or redirects if not present */ %>
+    <% if (title) { %>
+        <h1>
+            <%= title %>
+        </h1>
+        <% } else { res.redirect('/') } %>
+
+            <%# Message Block: Uncomment and implement messages() in the future %>
+                <%# messages() %>
+
+                    <% /* Inventory Items Display: Shows the HTML grid of vehicles */ %>
+                        <%- grid %>
