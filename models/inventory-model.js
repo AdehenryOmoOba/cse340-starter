@@ -25,4 +25,11 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-module.exports = {getClassifications, getInventoryByClassificationId} 
+async function getVehicleById(inv_id) {
+  const db = require('../database'); // adjust if needed
+  const sql = 'SELECT * FROM inventory WHERE inventory_id = $1';
+  const data = await db.query(sql, [inv_id]);
+  return data.rows[0];
+}
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById} 

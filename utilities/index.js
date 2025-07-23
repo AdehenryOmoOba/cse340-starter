@@ -57,11 +57,32 @@ Util.buildClassificationGrid = async function(data){
   return grid
 }
 
-/* ****************************************
- * Middleware For Handling Errors
- * Wrap other function in this for 
- * General Error Handling
- **************************************** */
-Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+function buildVehicleDetailHtml(vehicle) {
+  const price = Number(vehicle.inventory_price).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+  const miles = Number(vehicle.inventory_miles).toLocaleString('en-US');
+  return `
+    <div class="vehicle-detail">
+      <img src="${vehicle.inventory_image}" alt="${vehicle.inventory_make} ${vehicle.inventory_model}" class="vehicle-image"/>
+      <div class="vehicle-info">
+        <h2>${vehicle.inventory_year} ${vehicle.inventory_make} ${vehicle.inventory_model}</h2>
+        <p class="vehicle-price">${price}</p>
+        <p><strong>Mileage:</strong> ${miles} miles</p>
+        <p><strong>Color:</strong> ${vehicle.inventory_color}</p>
+        <p>${vehicle.inventory_description}</p>
+      </div>
+    </div>
+  `;
+}
 
-module.exports = Util 
+function handleErrors(fn) {
+  return function (req, res, next) {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+}
+
+module.exports = {
+  getNav: Util.getNav,
+  buildClassificationGrid: Util.buildClassificationGrid,
+  buildVehicleDetailHtml,
+  handleErrors,
+}; 

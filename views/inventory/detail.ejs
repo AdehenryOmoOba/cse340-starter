@@ -1,0 +1,66 @@
+<main class="vehicle-detail-main">
+    <h1>
+        <%= vehicle.inventory_make %>
+            <%= vehicle.inventory_model %>
+    </h1>
+    <div class="vehicle-detail-wrapper">
+        <img src="<%= vehicle.inventory_image %>" alt="<%= vehicle.inventory_make %> <%= vehicle.inventory_model %>"
+            class="vehicle-detail-img" />
+        <div class="vehicle-detail-info">
+            <h2>
+                <%= vehicle.inventory_year %>
+                    <%= vehicle.inventory_make %>
+                        <%= vehicle.inventory_model %>
+            </h2>
+            <p class="vehicle-detail-price">
+                <%= Number(vehicle.inventory_price).toLocaleString('en-US', { style: 'currency' , currency: 'USD' }) %>
+            </p>
+            <p><strong>Mileage:</strong>
+                <%= Number(vehicle.inventory_miles).toLocaleString('en-US') %> miles
+            </p>
+            <p><strong>Color:</strong>
+                <%= vehicle.inventory_color %>
+            </p>
+            <p>
+                <%= vehicle.inventory_description %>
+            </p>
+        </div>
+    </div>
+</main>
+<style>
+    .vehicle-detail-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: flex-start;
+    }
+
+    .vehicle-detail-img {
+        max-width: 400px;
+        width: 100%;
+        border-radius: 1rem;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .vehicle-detail-info {
+        flex: 1;
+        min-width: 250px;
+    }
+
+    .vehicle-detail-price {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin: 1rem 0;
+    }
+
+    @media (max-width: 700px) {
+        .vehicle-detail-wrapper {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .vehicle-detail-img {
+            max-width: 100%;
+        }
+    }
+</style>
