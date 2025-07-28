@@ -1,0 +1,18 @@
+<div class="modern-container">
+    <h1>Inventory Management</h1>
+
+    <% if (typeof messages !=='undefined' && messages.length) { %>
+        <div class="flash-message">
+            <% messages.forEach(function(message) { %>
+                <p>
+                    <%= message %>
+                </p>
+                <% }) %>
+        </div>
+        <% } %>
+
+            <ul class="inventory-management-list">
+                <li><a href="/inv/add-classification">Add New Classification</a></li>
+                <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+            </ul>
+</div>

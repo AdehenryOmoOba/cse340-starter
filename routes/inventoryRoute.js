@@ -8,4 +8,15 @@ const utilities = require("../utilities/")
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId))
 router.get('/detail/:inv_id', invController.buildDetailView);
 
+// Add Classification routes
+router.get('/add-classification', utilities.handleErrors(invController.buildAddClassification));
+router.post('/add-classification', utilities.handleErrors(invController.addClassification));
+
+// Add Inventory routes
+router.get('/add-inventory', utilities.handleErrors(invController.buildAddInventory));
+router.post('/add-inventory', utilities.handleErrors(invController.addInventory));
+
+// Management view route
+router.get("/", utilities.handleErrors(invController.buildManagement));
+
 module.exports = router 

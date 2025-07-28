@@ -515,3 +515,214 @@ footer p {
   font-size: 1.2rem;
   margin: 30px 0;
 }
+
+.vehicle-detail-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.vehicle-detail-img {
+  max-width: 400px;
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.vehicle-detail-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.vehicle-detail-price {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin: 1rem 0;
+}
+
+@media (max-width: 700px) {
+  .vehicle-detail-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vehicle-detail-img {
+    max-width: 100%;
+  }
+}
+
+/* Inventory Management & Forms Modern Styles */
+.inventory-management-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 400px;
+  margin: 2rem auto 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.inventory-management-list li {
+  background: var(--light-gray);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s, background 0.2s;
+}
+
+.inventory-management-list li a {
+  display: block;
+  padding: 1.2rem 1.5rem;
+  color: var(--primary-color);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.inventory-management-list li a:hover,
+.inventory-management-list li a:focus {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+form.modern-form {
+  max-width: 500px;
+  margin: 2rem auto 0 auto;
+  background: var(--light-gray);
+  padding: 2rem 2.5rem 1.5rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+form.modern-form label {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--dark-color);
+}
+
+form.modern-form input,
+form.modern-form select,
+form.modern-form textarea {
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--gray);
+  border-radius: 6px;
+  font-size: 1rem;
+  background: var(--white);
+  transition: border 0.2s;
+}
+
+form.modern-form input:focus,
+form.modern-form select:focus,
+form.modern-form textarea:focus {
+  border: 1.5px solid var(--primary-color);
+  outline: none;
+}
+
+form.modern-form button[type="submit"] {
+  background: var(--primary-color);
+  color: var(--white);
+  border: none;
+  border-radius: 6px;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+}
+
+form.modern-form button[type="submit"]:hover,
+form.modern-form button[type="submit"]:focus {
+  background: var(--secondary-color);
+}
+
+.flash-message {
+  background: var(--accent-color);
+  color: var(--dark-color);
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem auto 0 auto;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.error-message {
+  background: #ffe0e0;
+  color: #b30000;
+  border-radius: 6px;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem auto 0 auto;
+  max-width: 500px;
+  box-shadow: 0 2px 8px rgba(179, 0, 0, 0.07);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+form.modern-form small {
+  color: var(--gray);
+  margin-top: -0.7rem;
+  margin-bottom: 0.7rem;
+  display: block;
+}
+
+/* Only show red background if input is invalid AND focused */
+form.modern-form input:focus:invalid,
+form.modern-form select:focus:invalid,
+form.modern-form textarea:focus:invalid {
+  background-color: #ffe0e0;
+  border-color: #b30000;
+  transition: background 0.2s, border 0.2s;
+}
+
+/* Only show green background if input is valid AND focused */
+form.modern-form input:focus:valid,
+form.modern-form select:focus:valid,
+form.modern-form textarea:focus:valid {
+  background-color: #e0ffe0;
+  border-color: #009900;
+  transition: background 0.2s, border 0.2s;
+}
+
+@media (max-width: 600px) {
+  form.modern-form {
+    padding: 1.2rem 0.7rem 1rem 0.7rem;
+  }
+
+  .inventory-management-list {
+    max-width: 98vw;
+  }
+}
+
+.no-image-placeholder {
+  width: 280px;
+  height: 280px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--light-gray) 60%, var(--accent-color) 100%);
+  color: var(--gray);
+  font-size: 2rem;
+  font-weight: 700;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+  .no-image-placeholder {
+    width: 180vw;
+    max-width: 180px;
+    height: 120px;
+    font-size: 1rem;
+  }
+}

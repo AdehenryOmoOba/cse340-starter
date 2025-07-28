@@ -5,8 +5,11 @@
         </h1>
         <% } else { res.redirect('/') } %>
 
-            <%# Message Block: Uncomment and implement messages() in the future %>
-                <%# messages() %>
+            <% if (typeof notice !=='undefined' && notice) { %>
+                <div class="flash-message">
+                    <%= notice %>
+                </div>
+                <% } %>
 
                     <% /* Inventory Items Display: Shows the HTML grid of vehicles */ %>
                         <%- grid %>
