@@ -6,3 +6,4 @@ README.md
 pnpm-lock.yaml
 # .DS_Store is only for Mac users
 **/.DS_Store
+db_users.txt

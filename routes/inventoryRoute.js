@@ -16,6 +16,9 @@ router.post('/add-classification', utilities.handleErrors(invController.addClass
 router.get('/add-inventory', utilities.handleErrors(invController.buildAddInventory));
 router.post('/add-inventory', utilities.handleErrors(invController.addInventory));
 
+// Route to get inventory by classification as JSON
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
 // Management view route
 router.get("/", utilities.handleErrors(invController.buildManagement));
 

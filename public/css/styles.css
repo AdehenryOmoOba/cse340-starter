@@ -561,30 +561,35 @@ footer p {
   margin: 2rem auto 0 auto;
   padding: 0;
   list-style: none;
+  align-items: center;
 }
 
 .inventory-management-list li {
-  background: var(--light-gray);
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s, background 0.2s;
+  width: 100%;
+  max-width: 300px;
 }
 
 .inventory-management-list li a {
   display: block;
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 2rem;
   color: var(--primary-color);
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 8px;
-  transition: background 0.2s, color 0.2s;
+  border-radius: 50px;
+  background: var(--white);
+  border: 2px solid var(--primary-color);
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .inventory-management-list li a:hover,
 .inventory-management-list li a:focus {
   background: var(--primary-color);
   color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 form.modern-form {
@@ -725,4 +730,154 @@ form.modern-form textarea:focus:valid {
     height: 120px;
     font-size: 1rem;
   }
+}
+
+/* Modern select styling for inventory management */
+#classificationList {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  margin: 1.5rem auto 2rem auto;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.1rem;
+  border: 1.5px solid var(--primary-color);
+  border-radius: 8px;
+  background: var(--light-gray);
+  color: var(--dark-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+#classificationList:focus {
+  border: 2px solid var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent-color);
+}
+
+/* Inventory management table styling */
+#inventoryDisplay {
+  width: 100%;
+  max-width: 700px;
+  margin: 2rem auto 1rem auto;
+  border-collapse: collapse;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+#inventoryDisplay thead {
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 1rem 1.2rem;
+  text-align: left;
+  font-size: 1.05rem;
+}
+
+#inventoryDisplay tr {
+  border-bottom: 1px solid var(--light-gray);
+}
+
+#inventoryDisplay tr:last-child {
+  border-bottom: none;
+}
+
+#inventoryDisplay a {
+  color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+#inventoryDisplay a:hover,
+#inventoryDisplay a:focus {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.inventory-instructions {
+  text-align: center;
+  margin: 2.5rem auto 2rem auto;
+  max-width: 600px;
+  background: var(--light-gray);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+}
+
+.inventory-instructions h2 {
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+.inventory-instructions p {
+  color: var(--gray);
+  font-size: 1.18rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+  display: none;
+  text-align: center;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--light-gray);
+  border-top: 4px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  color: var(--gray);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Noscript warning styles */
+noscript {
+  display: block !important;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+noscript::before {
+  content: "⚠️ ";
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
 }

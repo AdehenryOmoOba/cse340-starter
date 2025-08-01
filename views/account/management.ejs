@@ -1,0 +1,66 @@
+<style>
+    .account-management-container {
+        max-width: 500px;
+        margin: 3rem auto;
+        padding: 2.5rem 2rem;
+        background: #fff;
+        border-radius: 1.2rem;
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+        text-align: center;
+    }
+
+    .account-management-container h1 {
+        color: #0050b3;
+        margin-bottom: 1.2rem;
+        font-size: 2.2rem;
+    }
+
+    .account-management-container .welcome {
+        font-size: 1.3rem;
+        color: #2ecc40;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+    }
+
+    .account-management-container p {
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 1.5rem;
+    }
+
+    .flash-message {
+        background: #e6f7ff;
+        color: #0050b3;
+        border-radius: 0.5rem;
+        padding: 0.7rem 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .errors {
+        background: #fff6f6;
+        color: #e74c3c;
+        border-radius: 0.5rem;
+        padding: 0.7rem 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+</style>
+<div class="account-management-container">
+    <h1>Account Management</h1>
+    <% if (account_firstname) { %>
+        <div class="welcome">Welcome, <%= account_firstname %>!</div>
+        <% } %>
+            <% if (message && message.length> 0) { %>
+                <div class="flash-message">
+                    <%= message %>
+                </div>
+                <% } %>
+                    <% if (errors) { %>
+                        <div class="errors">
+                            <%= errors %>
+                        </div>
+                        <% } %>
+                            <p>We're glad to have you back. Use the navigation above to explore your account and our
+                                inventory. If you need help, just let us know!</p>
+</div>

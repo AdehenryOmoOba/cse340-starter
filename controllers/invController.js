@@ -51,13 +51,28 @@ async function buildManagement(req, res, next) {
   try {
     let nav = await utilities.getNav();
     const messages = req.flash('notice') || [];
+    const classificationList = await utilities.buildClassificationList();
     res.render('inventory/management', {
       title: 'Inventory Management',
       nav,
-      messages
+      messages,
+      classificationList
     });
   } catch (error) {
     next(error);
+  }
+}
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+async function getInventoryJSON(req, res, next) {
+  const classification_id = parseInt(req.params.classification_id);
+  const invData = await invModel.getInventoryByClassificationId(classification_id);
+  if (invData && invData.length) {
+    return res.json(invData);
+  } else {
+    next(new Error("No data returned"));
   }
 }
 
@@ -241,4 +256,5 @@ module.exports = {
   addClassification,
   buildAddInventory,
   addInventory,
+  getInventoryJSON,
 }; 
