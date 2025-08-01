@@ -132,6 +132,44 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+/* ***************************
+ *  Check Inventory Rules
+ * ************************** */
+function checkInventoryRules(inv_make, inv_model, inv_year, inv_price, inv_miles, inv_color, inv_description, inv_image, inv_thumbnail, classification_id) {
+  let errors = []
+  if (!inv_make || inv_make.trim().length < 3) {
+    errors.push('Make must be at least 3 characters long.')
+  }
+  if (!inv_model || inv_model.trim().length < 3) {
+    errors.push('Model must be at least 3 characters long.')
+  }
+  if (!inv_year || isNaN(inv_year) || inv_year < 1900 || inv_year > 2099) {
+    errors.push('Year must be a valid number between 1900 and 2099.')
+  }
+  if (!inv_price || isNaN(inv_price) || inv_price <= 0) {
+    errors.push('Price must be a valid positive number.')
+  }
+  if (!inv_miles || isNaN(inv_miles) || inv_miles < 0) {
+    errors.push('Miles must be a valid non-negative number.')
+  }
+  if (!inv_color || inv_color.trim().length < 1) {
+    errors.push('Color is required.')
+  }
+  if (!inv_description || inv_description.trim().length < 10) {
+    errors.push('Description must be at least 10 characters long.')
+  }
+  if (!inv_image || inv_image.trim().length < 1) {
+    errors.push('Image path is required.')
+  }
+  if (!inv_thumbnail || inv_thumbnail.trim().length < 1) {
+    errors.push('Thumbnail path is required.')
+  }
+  if (!classification_id) {
+    errors.push('Classification is required.')
+  }
+  return errors
+}
+
 module.exports = {
   getNav: Util.getNav,
   buildClassificationGrid: Util.buildClassificationGrid,
@@ -140,4 +178,5 @@ module.exports = {
   buildClassificationList: Util.buildClassificationList,
   checkJWTToken: Util.checkJWTToken,
   checkLogin: Util.checkLogin,
+  checkInventoryRules,
 }; 

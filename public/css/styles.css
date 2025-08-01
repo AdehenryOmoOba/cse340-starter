@@ -778,6 +778,21 @@ form.modern-form textarea:focus:valid {
   font-size: 1.05rem;
 }
 
+#inventoryDisplay th {
+  text-align: left;
+}
+
+#inventoryDisplay th:nth-child(2),
+#inventoryDisplay th:nth-child(3) {
+  text-align: center;
+  width: 80px;
+}
+
+#inventoryDisplay td:nth-child(2),
+#inventoryDisplay td:nth-child(3) {
+  text-align: center;
+}
+
 #inventoryDisplay tr {
   border-bottom: 1px solid var(--light-gray);
 }
