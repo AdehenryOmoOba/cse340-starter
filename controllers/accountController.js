@@ -125,11 +125,12 @@ async function accountLogin(req, res) {
 async function buildAccountManagement(req, res) {
   let nav = await utilities.getNav();
   const accountData = res.locals.accountData;
+  const flashMessages = req.flash('notice');
   res.render('account/management', {
     title: "Account Management",
     nav,
-    errors: null,
-    message: req.flash('notice'),
+    errors: [],
+    messages: Array.isArray(flashMessages) ? flashMessages : [],
     account_firstname: accountData ? accountData.account_firstname : null,
   });
 }

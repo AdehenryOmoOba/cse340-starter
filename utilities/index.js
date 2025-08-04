@@ -132,6 +132,24 @@ Util.checkLogin = (req, res, next) => {
   }
 }
 
+/* ****************************************
+ *  Check Account Type
+ * ************************************ */
+Util.checkAccountType = (req, res, next) => {
+  if (res.locals.loggedin && res.locals.accountData) {
+    const accountType = res.locals.accountData.account_type
+    if (accountType === "Employee" || accountType === "Admin") {
+      next()
+    } else {
+      req.flash("notice", "Access denied. Employee or Admin privileges required.")
+      return res.redirect("/account/login")
+    }
+  } else {
+    req.flash("notice", "Please log in.")
+    return res.redirect("/account/login")
+  }
+}
+
 /* ***************************
  *  Check Inventory Rules
  * ************************** */
@@ -178,5 +196,6 @@ module.exports = {
   buildClassificationList: Util.buildClassificationList,
   checkJWTToken: Util.checkJWTToken,
   checkLogin: Util.checkLogin,
+  checkAccountType: Util.checkAccountType,
   checkInventoryRules,
 }; 

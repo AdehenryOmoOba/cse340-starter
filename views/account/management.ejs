@@ -48,19 +48,35 @@
 </style>
 <div class="account-management-container">
     <h1>Account Management</h1>
-    <% if (account_firstname) { %>
-        <div class="welcome">Welcome, <%= account_firstname %>!</div>
-        <% } %>
-            <% if (message && message.length> 0) { %>
-                <div class="flash-message">
-                    <%= message %>
-                </div>
+
+    <% if (typeof accountData !=='undefined' && accountData.account_firstname) { %>
+        <h2>Welcome <%= accountData.account_firstname %>
+        </h2>
+
+        <a href="/account/update/<%= accountData.account_id %>"
+            style="display: inline-block; background: #0050b3; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 0.5rem; margin-bottom: 1.5rem; font-weight: 500;">Update
+            Account Information</a>
+
+        <% if (accountData.account_type==="Employee" || accountData.account_type==="Admin" ) { %>
+            <h3>Inventory Management</h3>
+            <p><a href="/inv/" style="color: #0050b3; text-decoration: none; font-weight: 500;">Access Inventory
+                    Management</a></p>
+            <% } %>
                 <% } %>
-                    <% if (errors) { %>
-                        <div class="errors">
-                            <%= errors %>
+
+                    <% if (typeof messages !=='undefined' && messages.length> 0) { %>
+                        <div class="flash-message">
+                            <% messages.forEach(function(message) { %>
+                                <%= message %>
+                                    <% }); %>
                         </div>
                         <% } %>
-                            <p>We're glad to have you back. Use the navigation above to explore your account and our
-                                inventory. If you need help, just let us know!</p>
+
+                            <% if (typeof errors !=='undefined' && errors.length> 0) { %>
+                                <div class="errors">
+                                    <% errors.forEach(function(error) { %>
+                                        <%= error %>
+                                            <% }); %>
+                                </div>
+                                <% } %>
 </div>

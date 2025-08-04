@@ -10,21 +10,25 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 router.get('/detail/:inv_id', invController.buildDetailView);
 
 // Add Classification routes
-router.get('/add-classification', utilities.handleErrors(invController.buildAddClassification));
-router.post('/add-classification', utilities.handleErrors(invController.addClassification));
+router.get('/add-classification', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.buildAddClassification));
+router.post('/add-classification', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.addClassification));
 
 // Add Inventory routes
-router.get('/add-inventory', utilities.handleErrors(invController.buildAddInventory));
-router.post('/add-inventory', invValidate.checkInventoryData, utilities.handleErrors(invController.addInventory));
+router.get('/add-inventory', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.buildAddInventory));
+router.post('/add-inventory', utilities.checkJWTToken, utilities.checkAccountType, invValidate.checkInventoryData, utilities.handleErrors(invController.addInventory));
 
 // Edit Inventory routes
-router.get('/edit/:inv_id', utilities.handleErrors(invController.editInventoryView));
-router.post('/update', invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+router.get('/edit/:inv_id', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.editInventoryView));
+router.post('/update', utilities.checkJWTToken, utilities.checkAccountType, invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+
+// Delete Inventory routes
+router.get('/delete/:inv_id', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.buildDeleteConfirm));
+router.post('/delete', utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.deleteInventoryItem));
 
 // Route to get inventory by classification as JSON
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+router.get("/getInventory/:classification_id", utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.getInventoryJSON));
 
 // Management view route
-router.get("/", utilities.handleErrors(invController.buildManagement));
+router.get("/", utilities.checkJWTToken, utilities.checkAccountType, utilities.handleErrors(invController.buildManagement));
 
 module.exports = router 

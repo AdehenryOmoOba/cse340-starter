@@ -341,6 +341,42 @@ async function updateInventory(req, res, next) {
   }
 }
 
+/* ***************************
+ *  Build delete confirmation view
+ * ************************** */
+async function buildDeleteConfirm(req, res, next) {
+  const inv_id = parseInt(req.params.inv_id);
+  let nav = await utilities.getNav();
+  const itemData = await invModel.getInventoryById(inv_id);
+  const itemName = `${itemData.inventory_make} ${itemData.inventory_model}`;
+  res.render("inventory/delete-confirm", {
+    title: "Delete " + itemName,
+    nav,
+    errors: [],
+    messages: [],
+    inv_id: itemData.inventory_id,
+    inv_make: itemData.inventory_make,
+    inv_model: itemData.inventory_model,
+    inv_year: itemData.inventory_year,
+    inv_price: itemData.inventory_price
+  });
+}
+
+/* ***************************
+ *  Delete Inventory Item
+ * ************************** */
+async function deleteInventoryItem(req, res, next) {
+  const inv_id = parseInt(req.body.inv_id);
+  const deleteResult = await invModel.deleteInventoryItem(inv_id);
+  if (deleteResult && deleteResult.rowCount > 0) {
+    req.flash("notice", "The inventory item was successfully deleted.");
+    res.redirect("/inv/");
+  } else {
+    req.flash("notice", "Sorry, the delete failed.");
+    res.redirect(`/inv/delete/${inv_id}`);
+  }
+}
+
 module.exports = {
   buildByClassificationId,
   buildDetailView,
@@ -352,4 +388,6 @@ module.exports = {
   getInventoryJSON,
   editInventoryView,
   updateInventory,
+  buildDeleteConfirm,
+  deleteInventoryItem,
 }; 

@@ -1,0 +1,42 @@
+<div class="modern-container">
+    <h1>Delete <%= typeof inv_make !=='undefined' && typeof inv_model !=='undefined' ? inv_make + ' ' + inv_model
+            : 'Inventory Item' %>
+    </h1>
+    <p
+        style="text-align: center; background-color: #ff6b6b; color: white; padding: 15px; border-radius: 8px; font-weight: bold; margin: 20px 0;">
+        Confirm Deletion - The delete is permanent.</p>
+    <% if (typeof messages !=='undefined' && messages.length) { %>
+        <div class="flash-message">
+            <% messages.forEach(function(message) { %>
+                <p>
+                    <%= message %>
+                </p>
+                <% }) %>
+        </div>
+        <% } %>
+            <% if (typeof errors !=='undefined' && errors.length) { %>
+                <div class="error-message">
+                    <% errors.forEach(function(error) { %>
+                        <p>
+                            <%= error %>
+                        </p>
+                        <% }) %>
+                </div>
+                <% } %>
+                    <form action="/inv/delete" method="post" class="modern-form">
+                        <label for="inv_make">Make</label>
+                        <input name="inv_make" id="inv_make" type="text"
+                            value="<%= typeof inv_make !== 'undefined' ? inv_make : '' %>" readonly>
+                        <label for="inv_model">Model</label>
+                        <input name="inv_model" id="inv_model" type="text"
+                            value="<%= typeof inv_model !== 'undefined' ? inv_model : '' %>" readonly>
+                        <label for="inv_year">Year</label>
+                        <input name="inv_year" id="inv_year" type="number"
+                            value="<%= typeof inv_year !== 'undefined' ? inv_year : '' %>" readonly>
+                        <label for="inv_price">Price</label>
+                        <input name="inv_price" id="inv_price" type="number"
+                            value="<%= typeof inv_price !== 'undefined' ? inv_price : '' %>" readonly>
+                        <button type="submit" style="background-color: #ff6b6b">Delete</button>
+                        <input type="hidden" name="inv_id" value="<%= typeof inv_id !== 'undefined' ? inv_id : '' %>">
+                    </form>
+</div>
