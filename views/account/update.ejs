@@ -1,0 +1,179 @@
+<style>
+    .update-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 1.2rem;
+        box-shadow: 0 6px 32px rgba(0, 0, 0, 0.10);
+    }
+
+    .update-container h1 {
+        color: #0050b3;
+        margin-bottom: 1.5rem;
+        font-size: 2.2rem;
+        text-align: center;
+    }
+
+    .form-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.8rem;
+        background: #fafafa;
+    }
+
+    .form-section h2 {
+        color: #0050b3;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+        border-bottom: 2px solid #0050b3;
+        padding-bottom: 0.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+    }
+
+    .form-group input:focus {
+        outline: none;
+        border-color: #0050b3;
+        box-shadow: 0 0 0 2px rgba(0, 80, 179, 0.2);
+    }
+
+    .submit-btn {
+        background: #0050b3;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background: #003d82;
+    }
+
+    .flash-message {
+        background: #e6f7ff;
+        color: #0050b3;
+        border-radius: 0.5rem;
+        padding: 0.7rem 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .error-message {
+        background: #fff6f6;
+        color: #e74c3c;
+        border-radius: 0.5rem;
+        padding: 0.7rem 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+    }
+
+    .password-info {
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffeaa7;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+    }
+</style>
+
+<div class="update-container">
+    <h1>Update Account Information</h1>
+
+    <% if (typeof messages !=='undefined' && messages.length> 0) { %>
+        <div class="flash-message">
+            <% messages.forEach(function(message) { %>
+                <%= message %>
+                    <% }); %>
+        </div>
+        <% } %>
+
+            <% if (typeof errors !=='undefined' && errors.length> 0) { %>
+                <div class="error-message">
+                    <% errors.forEach(function(error) { %>
+                        <%= error %>
+                            <% }); %>
+                </div>
+                <% } %>
+
+                    <!-- Account Update Form -->
+                    <div class="form-section">
+                        <h2>Account Update</h2>
+                        <form action="/account/update" method="post" class="modern-form">
+                            <div class="form-group">
+                                <label for="account_firstname">First Name</label>
+                                <input type="text" name="account_firstname" id="account_firstname" required
+                                    value="<%= typeof account_firstname !== 'undefined' ? account_firstname : '' %>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="account_lastname">Last Name</label>
+                                <input type="text" name="account_lastname" id="account_lastname" required
+                                    value="<%= typeof account_lastname !== 'undefined' ? account_lastname : '' %>">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="account_email">Email Address</label>
+                                <input type="email" name="account_email" id="account_email" required
+                                    value="<%= typeof account_email !== 'undefined' ? account_email : '' %>">
+                            </div>
+
+                            <input type="hidden" name="account_id"
+                                value="<%= typeof account_id !== 'undefined' ? account_id : '' %>">
+                            <button type="submit" class="submit-btn">Update Account</button>
+                        </form>
+                    </div>
+
+                    <!-- Change Password Form -->
+                    <div class="form-section">
+                        <h2>Change Password</h2>
+                        <div class="password-info">
+                            <strong>Password Requirements:</strong><br>
+                            • Must be at least 12 characters long<br>
+                            • Must contain at least 1 uppercase character<br>
+                            • Must contain at least 1 lowercase character<br>
+                            • Must contain at least 1 number<br>
+                            • Must contain at least 1 special character
+                        </div>
+                        <form action="/account/update-password" method="post" class="modern-form">
+                            <div class="form-group">
+                                <label for="account_password">New Password</label>
+                                <input type="password" name="account_password" id="account_password" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="account_password_confirm">Confirm New Password</label>
+                                <input type="password" name="account_password_confirm" id="account_password_confirm"
+                                    required>
+                            </div>
+
+                            <input type="hidden" name="account_id"
+                                value="<%= typeof account_id !== 'undefined' ? account_id : '' %>">
+                            <button type="submit" class="submit-btn">Change Password</button>
+                        </form>
+                    </div>
+</div>
