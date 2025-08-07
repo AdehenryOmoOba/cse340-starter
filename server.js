@@ -12,6 +12,7 @@ const pool = require('./database/');
 const accountRoute = require('./routes/accountRoute');
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const messageRoute = require('./routes/messageRoute');
 
 
 // View Engine and Templates
@@ -41,13 +42,17 @@ app.use(session({
 // Express Messages Middleware
 app.use(require('connect-flash')());
 app.use(function(req, res, next){
+  res.locals.flash = req.flash();
+  next();
+});
+app.use(function(req, res, next){
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
 
 // Middleware to set nav for all views
 app.use(async (req, res, next) => {
-  res.locals.nav = await utilities.getNav();
+  res.locals.nav = await utilities.getNav(req);
   next();
 });
 
@@ -60,6 +65,7 @@ app.use(static)
 // Routes
 app.use("/inv", inventoryRoute)
 app.use('/account', accountRoute);
+app.use('/messages', messageRoute);
 
 // Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))

@@ -10,9 +10,58 @@
     <%- include('../partials/header') %>
         <%- include('../partials/navigation') %>
             <main id="main-content" role="main">
-                <%- body %>
+                <% if (typeof flash !=='undefined' ) { %>
+                    <div class="global-flash-messages">
+                        <% if (flash.notice && flash.notice.length> 0) { %>
+                            <div class="flash-message">
+                                <%= flash.notice[0] %>
+                            </div>
+                            <% } %>
+                                <% if (flash.success && flash.success.length> 0) { %>
+                                    <div class="flash-message success">
+                                        <%= flash.success[0] %>
+                                    </div>
+                                    <% } %>
+                                        <% if (flash.error && flash.error.length> 0) { %>
+                                            <div class="flash-message error">
+                                                <%= flash.error[0] %>
+                                            </div>
+                                            <% } %>
+                    </div>
+                    <% } %>
+                        <%- body %>
             </main>
             <%- include('../partials/footer') %>
+                <style>
+                    .global-flash-messages {
+                        margin: 1.2rem auto 1.5rem auto;
+                        max-width: 600px;
+                    }
+
+                    .flash-message {
+                        background: #fee2e2;
+                        color: #b91c1c;
+                        border: 1px solid #fca5a5;
+                        border-radius: 6px;
+                        padding: 0.7rem 1rem;
+                        margin-bottom: 0.7rem;
+                        text-align: center;
+                        font-weight: 500;
+                        font-size: 1rem;
+                    }
+
+                    .flash-message.success {
+                        background: #d1fae5;
+                        color: #065f46;
+                        border: 1px solid #34d399;
+                    }
+
+                    .flash-message.error {
+                        background: #fee2e2;
+                        color: #b91c1c;
+                        border: 1px solid #fca5a5;
+                    }
+                </style>
 </body>
 
 </html>

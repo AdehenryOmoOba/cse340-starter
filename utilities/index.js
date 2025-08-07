@@ -6,12 +6,12 @@ require("dotenv").config()
 /* ************************
  * Constructs the nav HTML unordered list
  ************************** */
-Util.getNav = async function () {
-  let data = await invModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
+Util.getNav = async function (req = null) {
+  let data = await invModel.getClassifications();
+  let list = "<ul>";
+  list += '<li><a href="/" title="Home page">Home</a></li>';
   data.rows.forEach((row) => {
-    list += "<li>"
+    list += "<li>";
     list +=
       '<a href="/inv/type/' +
       row.classification_id +
@@ -19,12 +19,20 @@ Util.getNav = async function () {
       row.classification_name +
       ' vehicles">' +
       row.classification_name +
-      "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
-}
+      "</a>";
+    list += "</li>";
+  });
+  // Add feedback link for logged-in users
+  if (req && req.session && req.session.account_id) {
+    list += '<li><a href="/messages/new" title="Send Feedback">Send Feedback</a></li>';
+    // Admin link
+    if (req.session.account_type === "Admin") {
+      list += '<li><a href="/messages" title="View Feedback">View Feedback</a></li>';
+    }
+  }
+  list += "</ul>";
+  return list;
+};
 
 /* **************************************
 * Build the classification view HTML
